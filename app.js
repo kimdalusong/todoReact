@@ -7,7 +7,7 @@ const _ = require('lodash');
 mongoose.connect('mongodb+srv://admin-jasper:kimjasper05@cluster0-caozn.mongodb.net/todoDB', {
     useNewUrlParser: true,
     useUnifiedTopology: true
-});
+});     
 
 app.set('view engine', 'ejs');
 
@@ -130,6 +130,10 @@ app.post("/delete", function (req, res) {
 
 });
 
-app.listen(3000, function () {
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port, function () {
     console.log("Server started on Port 3000");
 })
